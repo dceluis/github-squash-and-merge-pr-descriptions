@@ -32,20 +32,22 @@
     }
    
     var squashButton = document.querySelector('button.btn-group-squash[data-details-container=".js-merge-pr"]')
-    if (squashButton && squashButton.getAttribute('squashmerge')) {
-      return;
-    }
+    if (squashButton) {
+      if (squashButton.getAttribute('squashmerge')) {
+        return;
+      }
 
-    squashButton.addEventListener('click', function() {
-      // GitHub populates the commit message with a bit of a delay, so we also need to delay our
-      // population of the message.
-      setTimeout(function() {
-        var mergeMessageField = document.getElementById('merge_message_field');
-        var prTextarea = document.getElementsByClassName('comment-form-textarea')[0];
-        mergeMessageField.value = prTextarea.value;
-      }, 50);
-    });
-    squashButton.setAttribute('squashmerge', 'true');
+      squashButton.addEventListener('click', function() {
+        // GitHub populates the commit message with a bit of a delay, so we also need to delay our
+        // population of the message.
+        setTimeout(function() {
+          var mergeMessageField = document.getElementById('merge_message_field');
+          var prTextarea = document.getElementsByClassName('comment-form-textarea')[0];
+          mergeMessageField.value = prTextarea.value;
+        }, 50);
+      });
+      squashButton.setAttribute('squashmerge', 'true');
+    }
   }
 
   const pollInterval = 1000; // Milliseconds
