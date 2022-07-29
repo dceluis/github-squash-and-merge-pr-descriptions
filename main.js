@@ -32,7 +32,7 @@
     }
    
     var squashButton = document.querySelector('button.btn-group-squash[data-details-container=".js-merge-pr"]')
-    if (squashButton.getAttribute('squashmerge')) {
+    if (squashButton && squashButton.getAttribute('squashmerge')) {
       return;
     }
 
